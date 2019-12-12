@@ -1,49 +1,28 @@
-#!/usr/bin/env node
-import readlineSync from 'readline-sync';
+import { askUser } from './share';
+import { evenGame } from './games';
 
-const askUserForName = () => readlineSync.question('May I have your name? ');
-const greeting = (name) => {
-  console.log(`Hello ${name}`);
-};
-export const fullGreeting = () => {
-  const name = askUserForName();
-  greeting(name);
-  return name;
-};
-
-const checkNumEven = (num) => num % 2 === 0;
-const createRandomNum = () => Math.floor(Math.random() * 100);
-const askUserForNumber = (number) => readlineSync.question(`Question: ${number} `);
-
-export const evenGame = (name) => {
-  const number = createRandomNum();
-  const answer = askUserForNumber(number);
-  const correctAnswer = checkNumEven(number) ? 'yes' : 'no';
-  console.log(`Your answer: ${answer}`);
-  if (answer === correctAnswer) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}.`);
-  console.log(`Let's try again, ${name}`);
-  return false;
-};
-
-export const fireGame = (game, times) => {
+const fireGame = (game, times) => {
   console.log('Welcome to the Brain Games!');
+
   if (game === evenGame) {
     console.log('Answer "yes" if the number is even, otherwise answer "no".');
   }
-  const name = fullGreeting();
-  let result;
+
+  const name = askUser('May I have your name?');
+
+  console.log(`Hello ${name}`);
+
+  let won = false;
   for (let i = 0; i < times; i += 1) {
     if (!game(name)) {
-      result = false;
+      won = false;
       break;
     }
-    result = true;
+    won = true;
   }
-  if (result) {
+  if (won) {
     console.log(`Congratulations, ${name}`);
   }
 };
+
+export default fireGame;
