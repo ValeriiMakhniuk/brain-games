@@ -1,8 +1,9 @@
-import checkNumEven from './checkNumEven';
 import { askUser, createRandomNum } from '../../share';
 
+const checkNumEven = (num) => num % 2 === 0;
+
 export default (name) => {
-  const number = createRandomNum();
+  const number = createRandomNum(101);
   const answer = askUser(`Question: ${number} `);
   const correctAnswer = checkNumEven(number) ? 'yes' : 'no';
   console.log(`Your answer: ${answer}`);
