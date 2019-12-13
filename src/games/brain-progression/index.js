@@ -16,7 +16,7 @@ const replace = (progression, index) => {
   const replaced = progression;
   replaced[index] = '..';
   return replaced;
-}
+};
 
 export default (name) => {
   const progression = generateProgression();
