@@ -1,27 +1,47 @@
-import { cons, car, cdr } from '../pairs';
+import
+{
+  cons,
+  car,
+  cdr,
+} from '@hexlet/pairs';
 
 // Constructor for arithmetic operation with 2 operands
-export const makeOperandsPair = (op1, op2) => cons(op1, op2);
+export const makeOperation = (op1, op2, operator) => cons(cons(op1, op2), operator);
 
 // Selectors
-export const getLeftOperand = (pair) => car(pair);
-export const getRightOperand = (pair) => cdr(pair);
+const getLeftOperand = (pair) => car(car(pair));
+const getRightOperand = (pair) => cdr(car(pair));
+const getOperator = (pair) => cdr(pair);
 
 // Methods
-export const sum = (pair) => getLeftOperand(pair) + getRightOperand(pair);
-export const sub = (pair) => getLeftOperand(pair) - getRightOperand(pair);
-export const mult = (pair) => getLeftOperand(pair) * getRightOperand(pair);
-export const operationToString = (pair, operation) => {
+const sum = (pair) => getLeftOperand(pair) + getRightOperand(pair);
+const sub = (pair) => getLeftOperand(pair) - getRightOperand(pair);
+const mult = (pair) => getLeftOperand(pair) * getRightOperand(pair);
+const gcd = (pair) => {
+  function nod(x, y) {
+    if (y === 0) return Math.abs(x);
+    return nod(y, x % y);
+  }
   const left = getLeftOperand(pair);
   const right = getRightOperand(pair);
-  if (operation === sum) {
-    return `${left} + ${right}`;
+  return nod(left, right);
+};
+// Share Mathods
+export const operationToString = (pair) => `${getLeftOperand(pair)} ${getOperator(pair)} ${getRightOperand(pair)}`;
+export const operandsToString = (pair) => `${getLeftOperand(pair)} ${getRightOperand(pair)}`;
+export const getResultOfOperation = (pair) => {
+  const operator = getOperator(pair);
+  if (operator === '+') {
+    return sum(pair);
   }
-  if (operation === sub) {
-    return `${left} - ${right}`;
+  if (operator === '-') {
+    return sub(pair);
   }
-  if (operation === mult) {
-    return `${left} * ${right}`;
+  if (operator === '*') {
+    return mult(pair);
   }
-  return 'Something went wrong, try again';
+  if (operator === 'nod') {
+    return gcd(pair);
+  }
+  return `${pair} is no a pair`;
 };
