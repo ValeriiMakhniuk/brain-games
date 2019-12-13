@@ -1,11 +1,6 @@
 import { createRandomNum, askUser } from '../../share';
 import { operandsToString, makeOperation, getResultOfOperation } from '../../libs/arithmetic';
 
-const gcd = (a, b) => {
-  if (b === 0) return Math.abs(a);
-  return gcd(b, a % b);
-};
-
 export default (name) => {
   const operation = makeOperation(createRandomNum(51), createRandomNum(51), 'nod');
   const answer = askUser(`Question: ${operandsToString(operation)} `);
