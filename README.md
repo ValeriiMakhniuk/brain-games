@@ -2,16 +2,21 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 [![Build Status](https://travis-ci.org/ValeriiMakhniuk/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/ValeriiMakhniuk/frontend-project-lvl1)
 
-# Welcome to Brain Games!
+# Brain games
 
-Hi! I'm Valera and it's my first cl project.
+> Brain games is package which includes 5 command line games that you can play in your terminal.
 
-# Games
+## Games
 
- - **brain-calc:** asking arithmetic expression
- - **brain-even:** asking is the number even or not
- - **brain-gcd:** asking what's the greatest common divisor of two numbers
+ - **brain-calc:** asks arithmetic expression
+ - **brain-even:** asks whether the number is even or not
+ - **brain-gcd:** asks what's the greatest common divisor of two numbers
+ - **brain-prime:** asks whether the number is prime or not
+ - **brain-progression** asks postponed number in progression
 
-# Installation
+## Getting Started
+
+### Installation 
+To play games in your terminal, follow the instruction:
 
 [![asciicast](https://asciinema.org/a/V2C9rLUJEHNSgfOD9OZxg2US5.svg)](https://asciinema.org/a/V2C9rLUJEHNSgfOD9OZxg2US5)
