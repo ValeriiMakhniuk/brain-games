@@ -4,7 +4,7 @@
 
 # Brain games
 
-> Brain games is package which includes 5 command line games that you can play in your terminal.
+> Brain games is package which includes 5 games which you can play from your terminal.
 
 ## Games
 
