@@ -1,7 +1,8 @@
 {
   "name": "frontend-project-lvl1",
   "version": "1.0.0",
-  "description": "",
+  "description": "interesting command line games",
+  "keywords": ["cl", "games", "command-line games"],
   "main": "index.js",
   "bin": {
     "brain-even": "dist/bin/brain-even.js",
@@ -22,7 +23,7 @@
     "type": "git",
     "url": "git+https://github.com/ValeriiMakhniuk/frontend-project-lvl1.git"
   },
-  "author": "Valerii Makhniuk",
+  "author": "Valerii Makhniuk <vmakhnyuk@yandex.ru>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ValeriiMakhniuk/frontend-project-lvl1/issues"
