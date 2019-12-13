@@ -1,4 +1,4 @@
-import { askUser } from './share';
+import { askUserName } from './share';
 import
 {
   evenGame,
@@ -17,7 +17,7 @@ const fireGame = (game, times) => {
   if (game === progressionGame) console.log('What number is missing in the progression?');
   if (game === primeGame) console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
-  const name = askUser('May I have your name?');
+  const name = askUserName('May I have your name?');
 
   console.log(`Hello ${name}`);
 
