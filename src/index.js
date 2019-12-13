@@ -1,5 +1,12 @@
 import { askUser } from './share';
-import { evenGame, calcGame, gcdGame } from './games';
+import
+{
+  evenGame,
+  calcGame,
+  gcdGame,
+  progressionGame,
+  primeGame,
+} from './games';
 
 const fireGame = (game, times) => {
   console.log('Welcome to the Brain Games!');
@@ -7,6 +14,8 @@ const fireGame = (game, times) => {
   if (game === evenGame) console.log('Answer "yes" if the number is even, otherwise answer "no".');
   if (game === calcGame) console.log('What is the result of the expression?');
   if (game === gcdGame) console.log('Find the greatest common divisor of given numbers.');
+  if (game === progressionGame) console.log('What number is missing in the progression?');
+  if (game === primeGame) console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   const name = askUser('May I have your name?');
 
