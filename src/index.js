@@ -1,37 +1,29 @@
-import { askUserName } from './share';
-import
-{
-  evenGame,
-  calcGame,
-  gcdGame,
-  progressionGame,
-  primeGame,
-} from './games';
+import readlineSync from 'readline-sync';
+import { car, cdr } from '@hexlet/pairs';
 
-const fireGame = (game, times) => {
+const fireGame = (game, description) => {
   console.log('Welcome to the Brain Games!');
+  console.log(description);
 
-  if (game === evenGame) console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  if (game === calcGame) console.log('What is the result of the expression?');
-  if (game === gcdGame) console.log('Find the greatest common divisor of given numbers.');
-  if (game === progressionGame) console.log('What number is missing in the progression?');
-  if (game === primeGame) console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-
-  const name = askUserName('May I have your name?');
+  const name = readlineSync.question('May I have your name? ');
 
   console.log(`Hello ${name}`);
 
-  let won = false;
-  for (let i = 0; i < times; i += 1) {
-    if (!game(name)) {
-      won = false;
-      break;
+  for (let i = 0; i < 3; i += 1) {
+    const data = game();
+    const question = car(data);
+    const correctAnswer = cdr(data);
+    const userAnswer = readlineSync.question(`Question: ${question} `);
+    if (userAnswer === correctAnswer) {
+      console.log('Correct!');
+    } else {
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}.`);
+      console.log(`Let's try again, ${name}`);
+      return 1;
     }
-    won = true;
   }
-  if (won) {
-    console.log(`Congratulations, ${name}`);
-  }
+  console.log(`Congratulations, ${name}`);
+  return 0;
 };
 
 export default fireGame;
