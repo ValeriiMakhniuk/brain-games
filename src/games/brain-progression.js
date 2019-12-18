@@ -4,9 +4,7 @@ import { createRandomNum } from '../share';
 
 const description = 'What number is missing in the progression?';
 
-const generateProgression = () => {
-  const step = createRandomNum(1, 10);
-  const randomIndex = createRandomNum(0, 9);
+const generateProgression = (step, randomIndex) => {
   const progression = [];
   let answer;
 
@@ -24,7 +22,9 @@ const generateProgression = () => {
 };
 
 const progressionGame = () => {
-  const progressionPair = generateProgression();
+  const step = createRandomNum(1, 10);
+  const randomIndex = createRandomNum(0, 9);
+  const progressionPair = generateProgression(step, randomIndex);
   const progression = car(progressionPair);
   const correctAnswer = cdr(progressionPair);
   return cons(progression, correctAnswer);
