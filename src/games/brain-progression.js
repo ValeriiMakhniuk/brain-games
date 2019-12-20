@@ -4,12 +4,12 @@ import { createRandomNum } from '../share';
 
 const description = 'What number is missing in the progression?';
 
-const generateProgression = (step, randomIndex) => {
+const generateProgressionData = (length, step, randomIndex) => {
   const progression = [];
   let answer;
 
   let j = step;
-  for (let i = 0; i < 10; i += 1) {
+  for (let i = 0; i < length; i += 1) {
     if (i === randomIndex) {
       progression.push('..');
       answer = j;
@@ -21,13 +21,14 @@ const generateProgression = (step, randomIndex) => {
   return cons(progression.join(' '), answer.toString());
 };
 
-const progressionGame = () => {
+const getGameData = () => {
+  const length = createRandomNum(3, 10);
   const step = createRandomNum(1, 10);
-  const randomIndex = createRandomNum(0, 9);
-  const progressionPair = generateProgression(step, randomIndex);
-  const progression = car(progressionPair);
-  const correctAnswer = cdr(progressionPair);
+  const randomIndex = createRandomNum(0, length - 1);
+  const progressionData = generateProgressionData(length, step, randomIndex);
+  const progression = car(progressionData);
+  const correctAnswer = cdr(progressionData);
   return cons(progression, correctAnswer);
 };
 
-export default () => fireGame(progressionGame, description);
+export default () => fireGame(getGameData, description);

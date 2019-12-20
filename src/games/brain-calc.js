@@ -2,44 +2,37 @@ import { cons, car, cdr } from '@hexlet/pairs';
 import fireGame from '../index';
 import { createRandomNum } from '../share';
 
-const getRandomOperator = () => {
-  const operations = ['+', '-', '*'];
-  const randomIndex = createRandomNum(0, operations.length - 1);
-  return operations[randomIndex];
+const make = (op1, op2) => cons(op1, op2);
+const getLeftOperand = (pair) => car(pair);
+const getRightOperand = (pair) => cdr(pair);
+
+const getResultOfOperation = (pair, operator) => {
+  switch (operator) {
+    case '+':
+      return getLeftOperand(pair) + getRightOperand(pair);
+    case '-':
+      return getLeftOperand(pair) - getRightOperand(pair);
+    case '*':
+      return getLeftOperand(pair) * getRightOperand(pair);
+    default:
+      return 'Something went wrong, try again';
+  }
 };
 
-const getLeftOperand = (pair) => car(car(pair));
-const getRightOperand = (pair) => cdr(car(pair));
-
-const sum = (pair) => getLeftOperand(pair) + getRightOperand(pair);
-const sub = (pair) => getLeftOperand(pair) - getRightOperand(pair);
-const mult = (pair) => getLeftOperand(pair) * getRightOperand(pair);
-
-const makeOperation = (op1, op2, operator) => cons(cons(op1, op2), operator);
-const getOperator = (pair) => cdr(pair);
-const operationToString = (pair) => `${getLeftOperand(pair)} ${getOperator(pair)} ${getRightOperand(pair)}`;
-export const getResultOfOperation = (pair) => {
-  const operator = getOperator(pair);
-  if (operator === '+') {
-    return sum(pair);
-  }
-  if (operator === '-') {
-    return sub(pair);
-  }
-  if (operator === '*') {
-    return mult(pair);
-  }
-  return `${pair} is no a pair`;
+const getRandomOperator = (operators) => {
+  const randomIndex = createRandomNum(0, operators.length - 1);
+  return operators[randomIndex];
 };
 
 const description = 'What is the result of the expression?';
+const operators = ['+', '-', '*'];
 
-const calcGame = () => {
-  const operator = getRandomOperator();
-  const operation = makeOperation(createRandomNum(0, 100), createRandomNum(0, 100), operator);
-  const question = operationToString(operation);
-  const correctAnswer = getResultOfOperation(operation);
+const getGameData = () => {
+  const operator = getRandomOperator(operators);
+  const operands = make(createRandomNum(0, 100), createRandomNum(0, 100));
+  const question = `${getLeftOperand(operands)} ${operator} ${getRightOperand(operands)}`;
+  const correctAnswer = getResultOfOperation(operands, operator);
   return cons(question, correctAnswer.toString());
 };
 
-export default () => fireGame(calcGame, description);
+export default () => fireGame(getGameData, description);

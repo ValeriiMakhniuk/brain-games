@@ -19,11 +19,11 @@ const gcd = (pair) => {
 
 const operandsToString = (pair) => `${getLeftOperand(pair)} ${getRightOperand(pair)}`;
 
-const gcdGame = () => {
+const getGameData = () => {
   const operands = cons(createRandomNum(1, 50), createRandomNum(1, 50));
   const question = operandsToString(operands);
   const correctAnswer = gcd(operands);
   return cons(question, correctAnswer.toString());
 };
 
-export default () => fireGame(gcdGame, description);
+export default () => fireGame(getGameData, description);
