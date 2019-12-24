@@ -1,19 +1,15 @@
-import { cons, car, cdr } from '@hexlet/pairs';
-import fireGame from '../index';
-import { createRandomNum } from '../share';
+import { cons } from '@hexlet/pairs';
+import fireGame from '..';
+import createRandomNum from '../share/createRandomNum';
 
-const make = (op1, op2) => cons(op1, op2);
-const getLeftOperand = (pair) => car(pair);
-const getRightOperand = (pair) => cdr(pair);
-
-const getResultOfOperation = (pair, operator) => {
+const getResultOfOperation = (op1, op2, operator) => {
   switch (operator) {
     case '+':
-      return getLeftOperand(pair) + getRightOperand(pair);
+      return op1 + op2;
     case '-':
-      return getLeftOperand(pair) - getRightOperand(pair);
+      return op1 - op2;
     case '*':
-      return getLeftOperand(pair) * getRightOperand(pair);
+      return op1 * op2;
     default:
       return 'Something went wrong, try again';
   }
@@ -29,9 +25,10 @@ const operators = ['+', '-', '*'];
 
 const getGameData = () => {
   const operator = getRandomOperator(operators);
-  const operands = make(createRandomNum(0, 100), createRandomNum(0, 100));
-  const question = `${getLeftOperand(operands)} ${operator} ${getRightOperand(operands)}`;
-  const correctAnswer = getResultOfOperation(operands, operator);
+  const firstOperand = createRandomNum(0, 100);
+  const secondOperand = createRandomNum(0, 100);
+  const question = `${(firstOperand)} ${operator} ${secondOperand}`;
+  const correctAnswer = getResultOfOperation(firstOperand, secondOperand, operator);
   return cons(question, correctAnswer.toString());
 };
 

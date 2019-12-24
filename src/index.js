@@ -1,16 +1,17 @@
 import readlineSync from 'readline-sync';
 import { car, cdr } from '@hexlet/pairs';
 
-const fireGame = (game, description) => {
+const fireGame = (getGameData, description) => {
   console.log('Welcome to the Brain Games!');
   console.log(description);
 
   const name = readlineSync.question('May I have your name? ');
-
   console.log(`Hello ${name}`);
 
-  for (let i = 0; i < 3; i += 1) {
-    const data = game();
+  const timesToPlay = 3;
+
+  for (let i = 0; i < timesToPlay; i += 1) {
+    const data = getGameData();
     const question = car(data);
     const correctAnswer = cdr(data);
     const userAnswer = readlineSync.question(`Question: ${question} `);
@@ -19,11 +20,11 @@ const fireGame = (game, description) => {
     } else {
       console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}.`);
       console.log(`Let's try again, ${name}`);
-      return 1;
+      return false;
     }
   }
   console.log(`Congratulations, ${name}`);
-  return 0;
+  return true;
 };
 
 export default fireGame;

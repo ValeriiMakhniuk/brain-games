@@ -1,6 +1,6 @@
 import { cons } from '@hexlet/pairs';
-import fireGame from '../index';
-import { createRandomNum } from '../share';
+import fireGame from '..';
+import createRandomNum from '../share/createRandomNum';
 
 const isEven = (num) => num % 2 === 0;
 

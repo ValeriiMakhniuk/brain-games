@@ -1,10 +1,13 @@
 import { cons } from '@hexlet/pairs';
-import fireGame from '../index';
-import { createRandomNum } from '../share';
+import fireGame from '..';
+import createRandomNum from '../share/createRandomNum';
 
 const isPrime = (num) => {
   if (num <= 1) {
     return false;
+  }
+  if (num === 2) {
+    return true;
   }
   for (let i = 2; i < num; i += 1) {
     if (num % i === 0) return false;
@@ -15,9 +18,9 @@ const isPrime = (num) => {
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const getGameData = () => {
-  const number = createRandomNum(0, 100);
-  const correctAnswer = isPrime(number) ? 'yes' : 'no';
-  return cons(number, correctAnswer);
+  const question = createRandomNum(0, 100);
+  const correctAnswer = isPrime(question) ? 'yes' : 'no';
+  return cons(question, correctAnswer);
 };
 
 export default () => fireGame(getGameData, description);

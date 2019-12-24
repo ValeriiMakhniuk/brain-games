@@ -1,28 +1,19 @@
-import { cons, car, cdr } from '@hexlet/pairs';
-import fireGame from '../index';
-import { createRandomNum } from '../share';
+import { cons } from '@hexlet/pairs';
+import fireGame from '..';
+import createRandomNum from '../share/createRandomNum';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-const getLeftOperand = (pair) => car(pair);
-const getRightOperand = (pair) => cdr(pair);
-
-const gcd = (pair) => {
-  function nod(x, y) {
-    if (y === 0) return Math.abs(x);
-    return nod(y, x % y);
-  }
-  const left = getLeftOperand(pair);
-  const right = getRightOperand(pair);
-  return nod(left, right);
+const gcd = (x, y) => {
+  if (y === 0) return Math.abs(x);
+  return gcd(y, x % y);
 };
 
-const operandsToString = (pair) => `${getLeftOperand(pair)} ${getRightOperand(pair)}`;
-
 const getGameData = () => {
-  const operands = cons(createRandomNum(1, 50), createRandomNum(1, 50));
-  const question = operandsToString(operands);
-  const correctAnswer = gcd(operands);
+  const firstOperand = createRandomNum(1, 50);
+  const secondOperand = createRandomNum(1, 50);
+  const question = `${firstOperand} ${secondOperand}`;
+  const correctAnswer = gcd(firstOperand, secondOperand);
   return cons(question, correctAnswer.toString());
 };
 

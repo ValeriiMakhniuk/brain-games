@@ -1,9 +1,12 @@
 {
-  "name": "frontend-project-lvl1",
+  "name": "brain-games",
   "version": "1.0.0",
   "description": "interesting command line games",
-  "keywords": ["cl", "games", "command-line games"],
-  "main": "index.js",
+  "keywords": [
+    "cl",
+    "games",
+    "command-line games"
+  ],
   "bin": {
     "brain-even": "dist/bin/brain-even.js",
     "brain-calc": "dist/bin/brain-calc.js",
