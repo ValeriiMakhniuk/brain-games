@@ -1,5 +1,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/8dbd43d82beed0de2820/maintainability)](https://codeclimate.com/github/ValeriiMakhniuk/frontend-project-lvl1/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/8dbd43d82beed0de2820/test_coverage)](https://codeclimate.com/github/ValeriiMakhniuk/frontend-project-lvl1/test_coverage)
 [![Build Status](https://travis-ci.org/ValeriiMakhniuk/brain-games.svg?branch=refactor)](https://travis-ci.org/ValeriiMakhniuk/brain-games)
 
 # Brain games
