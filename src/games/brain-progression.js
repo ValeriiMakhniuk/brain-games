@@ -4,27 +4,26 @@ import createRandomNum from '../share/createRandomNum';
 
 const description = 'What number is missing in the progression?';
 
-const generateProgression = (start, end) => {
+const generateProgression = (step, length) => {
   const progression = [];
-  for (let i = 0; i < end; i += 1) {
-    progression.push(start + start * i);
+  for (let i = 0; i < length; i += 1) {
+    progression.push(step + step * i);
   }
   return progression;
 };
 
-const getProgressionToAsk = (length, step, randomIndex) => {
+const getQuestion = (step, length, hiddenMemberIndex) => {
   const progression = generateProgression(step, length);
-  progression[randomIndex] = '..';
+  progression[hiddenMemberIndex] = '..';
   return progression;
 };
 
 const getGameData = () => {
-  const length = createRandomNum(3, 10);
+  const length = 10;
   const step = createRandomNum(1, 10);
-  const randomIndex = createRandomNum(0, length - 1);
-  const progression = getProgressionToAsk(length, step, randomIndex);
-  const question = progression.join(' ');
-  const correctAnswer = step + step * randomIndex;
+  const hiddenMemberIndex = createRandomNum(0, length - 1);
+  const question = getQuestion(step, length, hiddenMemberIndex).join(' ');
+  const correctAnswer = step + step * hiddenMemberIndex;
   return cons(question, correctAnswer.toString());
 };
 

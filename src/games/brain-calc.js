@@ -11,7 +11,7 @@ const getResultOfOperation = (op1, op2, operator) => {
     case '*':
       return op1 * op2;
     default:
-      return 'Something went wrong, try again';
+      return null;
   }
 };
 
@@ -27,7 +27,7 @@ const getGameData = () => {
   const operator = getRandomOperator(operators);
   const firstOperand = createRandomNum(0, 100);
   const secondOperand = createRandomNum(0, 100);
-  const question = `${(firstOperand)} ${operator} ${secondOperand}`;
+  const question = `${firstOperand} ${operator} ${secondOperand}`;
   const correctAnswer = getResultOfOperation(firstOperand, secondOperand, operator);
   return cons(question, correctAnswer.toString());
 };
