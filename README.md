@@ -38,4 +38,8 @@ To play games in your terminal, follow the instruction:
 
 ### Step brain-prime
 
+<<<<<<< HEAD
 [![asciicast](https://asciinema.org/a/Knz41P2I18UAkMN0FFuCUYsSW.svg)](https://asciinema.org/a/Knz41P2I18UAkMN0FFuCUYsSW)
+=======
+[![asciicast](https://asciinema.org/a/Knz41P2I18UAkMN0FFuCUYsSW.svg)](https://asciinema.org/a/Knz41P2I18UAkMN0FFuCUYsSW)
+>>>>>>> e521b20bf0361794913653f83964a80dd5dc7e35
